@@ -1,0 +1,31 @@
+
+<h1>Angular list of previous task</h1>
+
+<ul class="nav nav-tabs">
+	<p>Last works >>></p>
+	<li class="nav-item">
+	  <a class="nav-link active" aria-current="page" [routerLink]="[ '/works/cenzor' ]" routerLinkActive="active">Cenzor</a>
+	</li>
+	<li class="nav-item">
+	  <a class="nav-link" [routerLink]="[ '/works/userlist' ]" routerLinkActive="active">Users</a>
+	</li>
+	<li class="nav-item">
+	  <a class="nav-link" [routerLink]="[ '/works/tasklist' ]" routerLinkActive="active">Task</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link back" [routerLink]="[ '/' ]" routerLinkActive="active">Back to >>> Home</a>
+	</li>
+</ul>
+
+<div class="wrapper">
+	<h2>Bad words: <span class="bad-words">{{ badWords }}</span></h2>
+	<div>
+		<input class="input-word" type="text" placeholder="word here..">
+		<button class="add-btn" on-click="addWords()">Add</button>
+		<button class="reset-btn" on-click="resetWords()">Reset</button>
+	</div>
+	<textarea class="textarea" placeholder="text here.."></textarea>
+	<button class="censor-btn" on-click="censorWords()">Censor</button>
+</div>
+
+

@@ -1,0 +1,55 @@
+
+<h1>Angular list of previous task</h1>
+
+<ul class="nav nav-tabs">
+	<p>Last works >>></p>
+	<li class="nav-item">
+	  <a class="nav-link" [routerLink]="[ '/works/cenzor' ]" routerLinkActive="active">Cenzor</a>
+	</li>
+	<li class="nav-item">
+	  <a class="nav-link active" aria-current="page" [routerLink]="[ '/works/userlist' ]" routerLinkActive="active">Users</a>
+	</li>
+	<li class="nav-item">
+	  <a class="nav-link" [routerLink]="[ '/works/tasklist' ]" routerLinkActive="active">Task</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link back" [routerLink]="[ '/' ]" routerLinkActive="active">Back to >>> Home</a>
+	</li>
+</ul>
+
+<div class="container">
+	<h2>Count of task {{ count }}</h2>
+	<hr>
+	<input type="text" class="add-user" [(ngModel)]="userName">
+	<button (click)="addTasks()">Add</button>
+
+	<div class="right-side">
+		<table>
+			<tr>
+				<th><b>#</b></th>
+				<th><b>Task</b></th>
+				<th><b>Check</b></th>
+				<th><b>DONE/IN PROGRESS</b></th>
+				<th><b>Edit</b></th>
+				<th><b>Delete</b></th>
+			</tr>
+			<tr *ngFor="let task of taskList; index as i">
+				<th><b> {{ i+1 }} </b></th>
+				<th> {{ task.name }} </th>
+				<th><input type="checkbox" class="checkbox" (change)="onCheckboxChange($event, task)"></th>
+				<th class="done-progress"><span [ngClass]="{ 'done': task.status }"> {{ task.done }} </span></th>
+				<th><button class="editBtn" (click)="editNames(i)">Edit</button></th>
+				<th><button class="deleteBtn" (click)="deleteNames(i)" [disabled]="!task.status||editStatus">Delete</button></th> 
+			</tr>
+		</table>
+	
+		<div class="cos"></div>
+
+
+		<div *ngIf="modal" class="save-modal" >
+			<input class="save-input" type="text" [(ngModel)]="modalName">
+			<button class="saveBtn" (click)=" saveNames()">Save</button>
+		</div>
+	</div>
+</div>
+
